@@ -42,7 +42,10 @@ const store = (function() {
     }
 
     const findAndDelete = function(id){
-        this.items.filter(item => item.id != id)
+        this.items = this.items.filter(item => item.id !== id)
+        //let target = this.items.findIndex(item => item.id !== id);
+        //this.items.splice(target, 1);
+        shoppingList.render();
     }
 
     return {
@@ -56,4 +59,3 @@ const store = (function() {
         findAndUpdateName
     }
   })();
-
