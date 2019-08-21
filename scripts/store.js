@@ -45,8 +45,15 @@ const store = (function() {
         this.items = this.items.filter(item => item.id !== id)
         //let target = this.items.findIndex(item => item.id !== id);
         //this.items.splice(target, 1);
-        shoppingList.render();
     }
+
+    const toggleCheckedFilter = function(){
+      this.hideCheckedItems = !this.hideCheckedItems;
+    };
+
+    const setSearchTerm = function(searchTerm){
+      this.searchTerm = searchTerm;
+    };
 
     return {
         items, 
@@ -56,6 +63,8 @@ const store = (function() {
         findById,
         findAndToggleChecked,
         findAndDelete,
-        findAndUpdateName
+        findAndUpdateName,
+        toggleCheckedFilter,
+        setSearchTerm
     }
   })();
