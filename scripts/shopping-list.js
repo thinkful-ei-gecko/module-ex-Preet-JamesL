@@ -59,7 +59,7 @@ const shoppingList = (function(){
   function addItemToShoppingList(itemName) {
     try{
       Item.validateName(itemName);
-      Itemcreate(itemName);
+      Item.create(itemName);
       store.items.push({ id: cuid(), name: itemName, checked: false });
       render();
     }
