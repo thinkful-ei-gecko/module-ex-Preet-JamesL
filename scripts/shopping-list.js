@@ -48,7 +48,7 @@ const shoppingList = (function(){
     }
   
     // render the shopping list in the DOM
-    console.log('`render` ran');
+    // console.log('`render` ran');
     const shoppingListItemsString = generateShoppingItemsString(items);
   
     // insert that HTML into the DOM
@@ -57,7 +57,16 @@ const shoppingList = (function(){
   
   
   function addItemToShoppingList(itemName) {
-    store.items.push({ id: cuid(), name: itemName, checked: false });
+    try{
+      Item.validateName(itemName);
+      Itemcreate(itemName);
+      store.items.push({ id: cuid(), name: itemName, checked: false });
+      render();
+    }
+    catch(e){
+      console.error('Cannot add item: {error.message}')
+    }
+  
   }
   
   function handleNewItemSubmit() {
